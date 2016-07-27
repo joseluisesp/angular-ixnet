@@ -1,28 +1,23 @@
-angular.module('F1FeederApp.services', [])
-  .factory('ergastAPIservice', function($http) {
+angular.module('IXnet.services', [])
 
-    var ergastAPI = {};
+  .factory('IXnetservice', function($http) {
 
-    ergastAPI.getDrivers = function() {
+    var IXnetMarcas = {};
+
+    IXnetMarcas.getMarcas = function() {
       return $http({
-        method: 'JSONP', 
-        url: 'http://ergast.com/api/f1/2013/driverStandings.json?callback=JSON_CALLBACK'
+        method: 'GET', 
+        url: 'http://83.36.59.69:5050/api/marcas'
       });
     }
 
-    ergastAPI.getDriverDetails = function(id) {
+    IXnetMarcas.getModelos = function(marca) {
       return $http({
-        method: 'JSONP', 
-        url: 'http://ergast.com/api/f1/2013/drivers/'+ id +'/driverStandings.json?callback=JSON_CALLBACK'
+        method: 'GET', 
+        url: 'http://83.36.59.69:5050/api/modelos'
       });
     }
 
-    ergastAPI.getDriverRaces = function(id) {
-      return $http({
-        method: 'JSONP', 
-        url: 'http://ergast.com/api/f1/2013/drivers/'+ id +'/results.json?callback=JSON_CALLBACK'
-      });
-    }
-
-    return ergastAPI;
+    return IXnetMarcas;
   });
+

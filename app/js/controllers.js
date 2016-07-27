@@ -1,4 +1,4 @@
-angular.module('F1FeederApp.controllers', []).
+angular.module('IXnetOld.controllers', []).
 
   /* Drivers controller */
   controller('driversController', function($scope, ergastAPIservice) {
@@ -28,4 +28,33 @@ angular.module('F1FeederApp.controllers', []).
     ergastAPIservice.getDriverRaces($scope.id).success(function (response) {
         $scope.races = response.MRData.RaceTable.Races; 
     }); 
+  });
+
+
+
+angular.module('IXnet.controllers', []).
+
+  /* Marcas controller */
+  controller('marcasController', function($scope, $http, IXnetservice) {
+    $scope.nameFilter = null;
+    $scope.marcasList = [];
+    $scope.modelossList = [];
+    $scope.selected = "";
+
+    IXnetservice.getMarcas().success(function (response) {
+        $scope.marcasList = response;
+        console.log($scope.marcasList)
+    });
+
+    IXnetservice.getModelos().success(function (response) {
+        $scope.modelosList = response;
+        console.log($scope.modelosList)
+    });
+
+    $scope.refresh = function() {
+
+        IXnetservice.getModelos().success(function (response) {
+            $scope.modelosList = response;
+        });
+    }
   });

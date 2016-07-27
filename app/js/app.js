@@ -1,11 +1,10 @@
-angular.module('F1FeederApp', [
-  'F1FeederApp.services',
-  'F1FeederApp.controllers',
+angular.module('IXnet', [
+  'IXnet.services',
+  'IXnet.controllers',
   'ngRoute'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-	when("/drivers", {templateUrl: "partials/drivers.html", controller: "driversController"}).
-	when("/drivers/:id", {templateUrl: "partials/driver.html", controller: "driverController"}).
-	otherwise({redirectTo: '/drivers'});
+	when("/marcas", {templateUrl: "partials/marcas.html", controller: "marcasController"}).
+	otherwise({redirectTo: '/marcas'});
 }]);
